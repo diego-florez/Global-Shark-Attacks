@@ -70,7 +70,7 @@ def find_sharks(data):
 
 def find_year(data):
     year = []
-    for v in df["date"]:
+    for v in data:
         reg = "".join(re.findall(r"\d{4}",v))
 
         if reg == "":
@@ -82,7 +82,7 @@ def find_year(data):
 
 def find_month(data):
     month = []
-    for v in df["date"]:
+    for v in data:
         reg = "".join(re.findall(r"\-[A-z]{3}\-",v))
         reg = re.sub(r"\-","",reg)
 

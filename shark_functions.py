@@ -91,3 +91,11 @@ def find_month(data):
 
         month.append(reg)
     return month
+    
+
+def clean_cols(df):
+    df.columns = df.columns.str.lower()
+    df.columns = df.columns.str.replace(r"\."," ")
+    df.columns = df.columns.str.replace(r"\s$","")
+    df.columns
+    return df.columns

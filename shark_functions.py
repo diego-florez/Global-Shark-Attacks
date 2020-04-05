@@ -1,3 +1,5 @@
+import pandas as pd
+import numpy as np
 import re
 
 def shark_species(data):
@@ -91,7 +93,7 @@ def find_month(data):
 
         month.append(reg)
     return month
-    
+
 
 def clean_cols(df):
     df.columns = df.columns.str.lower()

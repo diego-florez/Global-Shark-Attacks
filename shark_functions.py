@@ -101,3 +101,63 @@ def clean_cols(df):
     df.columns = df.columns.str.replace(r"\s$","")
     df.columns
     return df.columns
+
+
+def clean_type(df):
+    df.type = df.type.fillna("invalid")
+    df.type = df.type.str.lower()
+    df.type = df.type.str.replace("questionable", "invalid")
+    df.loc[df.type.str.startswith("boat"), "type"] = "boat"
+    return df.type
+
+
+def clean_country(df):
+    df.country = df.country.fillna("no country")
+    df.country = df.country.str.lower()
+    df.country = df.country.str.replace("england", "united kingdom")
+    df.country = df.country.str.replace("scotland", "united kingdom")
+    df.country = df.country.str.replace(r"(.*)?ocean(.*)?", "no country")
+    df.country = df.country.str.replace(r"(.*)?sea(.*)?", "no country")
+    return df.country
+
+
+def clean_activity(df):
+    df.activity = df.activity.fillna("unknown")
+    df.activity = df.activity.str.lower()
+    df.activity = df.activity.str.replace(r"(.*)?surf(.*)?",("surfing"))
+    df.activity = df.activity.str.replace(r"(.*)?swim(.*)?",("swimming"))
+    df.activity = df.activity.str.replace(r"(.*)?diving(.*)?",("diving"))
+    df.activity = df.activity.str.replace(r"(.*)?paddl(.*)?",("paddle"))
+    df.activity = df.activity.str.replace(r"(.*)?fish(.*)?",("fishing"))
+    df.activity = df.activity.str.replace(r"(.*)?boat(.*)?",("boat"))
+    df.activity = df.activity.str.replace(r"(.*)?float(.*)?",("floating"))
+    return df.activity
+
+
+def clean_sex(df):    
+    df.sex = df.sex.fillna("NA")
+    df.sex = df.sex.str.replace(r"(.*)?M(.*)?","M")
+    df.sex = df.sex.str.replace(r"(.*)?N(.*)?","NA")
+    df.sex = df.sex.str.replace(".","NA")
+    df.sex = df.sex.str.replace("lli","NA")
+    return df.sex
+
+
+def clean_age(df):
+    df.age = df.age.str.replace(r"\b[^\d\W]+\b","0")
+    df.age = df.age.str.replace(r"\s+","0")
+    df.age = df.age.str.replace(r"½","0")
+    df.age = df.age.str.replace(r">5","6")
+    df.age = df.age.str.replace(r"?","0")
+    df.age = df.age.str.replace(r"(","0")
+    df.age = df.age.str.replace(r'"',"0")
+    df.age = pd.to_numeric(df.age, downcast='signed')
+    return df.age
+    
+
+def clean_fatal(df):
+    df["fatal (y/n)"] = df["fatal (y/n)"].fillna("UNKNOWN")
+    df["fatal (y/n)"] = df["fatal (y/n)"].str.replace(r"\s+N","N")
+    df["fatal (y/n)"] = df["fatal (y/n)"].str.replace(r"(.*)?M(.*)?","N")
+    df["fatal (y/n)"] = df["fatal (y/n)"].str.replace(r"2017","UNKNOWN")
+    return df["fatal (y/n)"]

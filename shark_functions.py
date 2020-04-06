@@ -135,11 +135,11 @@ def clean_activity(df):
 
 
 def clean_sex(df):    
-    df.sex = df.sex.fillna("NA")
+    df.sex = df.sex.fillna("UNKNOWN")
     df.sex = df.sex.str.replace(r"(.*)?M(.*)?","M")
-    df.sex = df.sex.str.replace(r"(.*)?N(.*)?","NA")
-    df.sex = df.sex.str.replace(".","NA")
-    df.sex = df.sex.str.replace("lli","NA")
+    df.sex = df.sex.str.replace(r"(.*)?N(.*)?","UNKNOWN")
+    df.sex = df.sex.str.replace(".","UNKNOWN")
+    df.sex = df.sex.str.replace("lli","UNKNOWN")
     return df.sex
 
 
@@ -153,7 +153,7 @@ def clean_age(df):
     df.age = df.age.str.replace(r'"',"0")
     df.age = pd.to_numeric(df.age, downcast='signed')
     return df.age
-    
+
 
 def clean_fatal(df):
     df["fatal (y/n)"] = df["fatal (y/n)"].fillna("UNKNOWN")

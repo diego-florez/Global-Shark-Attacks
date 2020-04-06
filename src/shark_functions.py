@@ -104,16 +104,16 @@ def clean_cols(df):
 
 
 def clean_type(df):
-    df.type = df.type.fillna("invalid")
     df.type = df.type.str.lower()
+    df.type = df.type.fillna("invalid")
     df.type = df.type.str.replace("questionable", "invalid")
     df.loc[df.type.str.startswith("boat"), "type"] = "boat"
     return df.type
 
 
 def clean_country(df):
-    df.country = df.country.fillna("no country")
     df.country = df.country.str.lower()
+    df.country = df.country.fillna("no country")
     df.country = df.country.str.replace("england", "united kingdom")
     df.country = df.country.str.replace("scotland", "united kingdom")
     df.country = df.country.str.replace(r"(.*)?ocean(.*)?", "no country")
@@ -122,8 +122,8 @@ def clean_country(df):
 
 
 def clean_activity(df):
-    df.activity = df.activity.fillna("unknown")
     df.activity = df.activity.str.lower()
+    df.activity = df.activity.fillna("unknown")
     df.activity = df.activity.str.replace(r"(.*)?surf(.*)?",("surfing"))
     df.activity = df.activity.str.replace(r"(.*)?swim(.*)?",("swimming"))
     df.activity = df.activity.str.replace(r"(.*)?diving(.*)?",("diving"))

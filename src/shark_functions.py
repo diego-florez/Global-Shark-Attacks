@@ -160,4 +160,6 @@ def clean_fatal(df):
     df["fatal (y/n)"] = df["fatal (y/n)"].str.replace(r"\s+N","N")
     df["fatal (y/n)"] = df["fatal (y/n)"].str.replace(r"(.*)?M(.*)?","N")
     df["fatal (y/n)"] = df["fatal (y/n)"].str.replace(r"2017","UNKNOWN")
+    df["fatal (y/n)"] = df["fatal (y/n)"].str.replace(r"N\s","N")
+    df["fatal (y/n)"] = df["fatal (y/n)"].str.replace(r"y","Y")
     return df["fatal (y/n)"]

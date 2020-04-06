@@ -1,18 +1,18 @@
 # Global-Shark-Attacks
 
 # Intro:
-In this repository you can see a 2 steps process; data cleaning and data analysis of the csv file "Global Sharck Attacks"
+In this repository you can see a 2 steps process; data cleaning and data analysis of the csv file "Global Sharck Attacks".
 The source of the file can be found here: https://www.kaggle.com/teajay/global-shark-attacks
 
 # Goals:
 The main goal of this project is to answer the question: which are the most dangerous sharks?
 
 # Steps:
-To find the answer to that question we have made the steps in this order:
-1. INPUT (original csv)
-2. src (functions to apply)
+To find the answer to that question we have made the following steps:
+1. INPUT (download original csv)
+2. src (create functions to apply)
 3. global-sharks-attack-cleaning.ipynb (data cleaning)
-4. OUTPUT (clean csv)
+4. OUTPUT (cleaned csv)
 5. global-sharks-attack-analysis.ipynb (analysis and conclusion)
 
 # Conclusion:
